@@ -8,14 +8,13 @@ const Message = ({ message }) => {
   const { currentUser } = useContext(AuthContext);
   const ref = useRef();
 
-  console.log({ message });
-
   useEffect(() => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   }, [message]);
   return (
     <div
       className={`message ${message.senderId === currentUser.uid && "owner"}`}
+      ref={ref}
     >
       <div className="messageInfo">
         <img
